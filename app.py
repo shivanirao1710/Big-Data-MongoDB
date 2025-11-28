@@ -251,5 +251,13 @@ def add_review(product_id):
     flash('Review posted')
     return redirect(url_for('product_detail', product_id=product_id))
 
+@app.route('/cart/remove/<product_id>', methods=['POST'])
+def remove_from_cart(product_id):
+    cart = session.get('cart', {})
+    if product_id in cart:
+        del cart[product_id]
+    session['cart'] = cart
+    return redirect(url_for('cart'))
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

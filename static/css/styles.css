@@ -92,6 +92,89 @@ a:hover {
   color: var(--muted);
   font-weight: 500;
 }
+/* -----------------------------------------------
+   AUTH FORMS (LOGIN & REGISTER)
+------------------------------------------------- */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh; /* vertically center */
+  padding: 2rem 1rem;
+}
+
+.auth-card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-card label {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-card input[type="text"],
+.auth-card input[type="password"] {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.auth-card input[type="text"]:focus,
+.auth-card input[type="password"]:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.auth-card .btn {
+  padding: 0.7rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.auth-card .switch-link {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.auth-card .switch-link a {
+  color: var(--accent);
+}
+
+.auth-card .switch-link a:hover {
+  color: var(--accent-hover);
+}
+
+/* Responsive */
+@media(max-width: 480px){
+  .auth-card {
+    padding: 1.5rem;
+  }
+}
 
 /* -----------------------------------------------
    HERO SECTION
