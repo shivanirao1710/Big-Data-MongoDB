@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin Dashboard</h2>
+
+<a href="{{ url_for('admin_add_product') }}" class="btn-add-product">
+    Add New Product
+</a>
+
+<section>
+    <h3>Products</h3>
+    <div class="table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Category</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for p in products %}
+                <tr>
+                    <td>{{ p.name }}</td>
+                    <td>₹{{ "%.2f"|format(p.price) }}</td>
+                    <td>{{ p.stock }}</td>
+                    <td>{{ p.category }}</td>
+                    <td>
+                        <form action="{{ url_for('admin_delete_product', product_id=p._id) }}" method="POST">
+                            <button type="submit" class="btn-delete" onclick="return confirm('Delete this product?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section>
+    <h3>Recent Orders</h3>
+    <div class="table-container">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for o in orders %}
+                <tr>
+                    <td>{{ o._id }}</td>
+                    <td>₹{{ "%.2f"|format(o.total) }}</td>
+                    <td>{{ o.status }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

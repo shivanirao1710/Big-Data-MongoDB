@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Welcome to ShopDemo</h1>
+      <p>Small demo e-commerce site using Flask & MongoDB</p>
+      <a class="btn" href="{{ url_for('products') }}">Browse Products</a>
+    </div>
+  </section>
+
+  <section class="grid">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      {% for p in products %}
+        <div class="product-card">
+          <a href="{{ url_for('product_detail', product_id=p._id|string) }}">
+            <img src="{{ p.images[0] }}" alt="{{ p.name }}">
+            <h3>{{ p.name }}</h3>
+            <p class="price">₹{{ "%.2f"|format(p.price) }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
